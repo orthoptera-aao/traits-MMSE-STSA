@@ -32,7 +32,7 @@ function MMSE_STSA_transcode($data) {
   if (!in_array($data["id"].".1kHz-highpass.MMSE_STSA.wav", $system["analyses"]["wav"])) {
     core_log("info", "MMSE_STSA", "File ".$data["id"]." needs MMSE_STSA version.");
     $file = core_download("wav/".$data["id"].".1kHz-highpass.wav");
-    if ($fiule = NULL) {
+    if ($file = NULL) {
       core_log("warning", "MMSE_STSA", "File could not be downloaded.");
       return($return);
     }
