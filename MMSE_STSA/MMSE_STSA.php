@@ -44,7 +44,7 @@ function MMSE_STSA_transcode($data) {
     exec("java -Xmx20148m -classpath modules/traits-MMSE_STSA/MMSE_STSA/AudioProcessor DenoisingExample scratch/wav/".$data["id"].".wav", $output, $return_value);
     exec("mv scratch/wav/".$data["id"]."_enhanced.wav scratch/wav/".$data["id"].".MMSE_STSA.wav");
     if ($return_value == 0) {
-      $return[$data["id"]."1k_MMSE"] = array(
+      $return[$data["id"]."MMSE"] = array(
         "file name" => $data["id"].".MMSE_STSA.wav",
         "local path" => "scratch/wav/",
         "save path" => "wav/"
@@ -54,14 +54,17 @@ function MMSE_STSA_transcode($data) {
     }
   }
   
+  unset($output);
+  unset($return_value);
+  
   if (!in_array($data["id"].".1kHz-highpass.MMSE_STSA.wav", $system["analyses"]["wav"])) {
-    core_log("info", "MMSE_STSA", "File ".$data["id"]." needs MMSE_STSA version.");
+    core_log("info", "MMSE_STSA", "File ".$data["id"]." needs MMSE_STSA 1kHz high pass version.");
     $file = core_download("wav/".$data["id"].".1kHz-highpass.wav");
     if ($file = NULL) {
       core_log("warning", "MMSE_STSA", "File could not be downloaded.");
       return($return);
     }
-    $return[$data["id"]] = array(
+    $return[$data["id"]."MMSE_1k"] = array(
       "file name" => $data["id"].".1kHz-highpass.wav",
       "local path" => "scratch/wav/",
       "save path" => NULL
