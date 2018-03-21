@@ -33,7 +33,7 @@ function MMSE_STSA_transcode($data) {
     $file = core_download("wav/".$data["id"].".1kHz-highpass.wav");
     if ($fiule = NULL) {
       core_log("warning", "MMSE_STSA", "File could not be downloaded.");
-      break;
+      return($return);
     }
     $return[$data["id"]] = array(
       "file name" => $data["id"].".1kHz-highpass.wav",
