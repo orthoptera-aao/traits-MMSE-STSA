@@ -1,0 +1,3 @@
+[submodule "MMSE_STSA/AudioProcessor"]
+	path = MMSE_STSA/AudioProcessor
+	url = git@github.com:alexanderchiu/AudioProcessor.git
