@@ -41,7 +41,7 @@ function MMSE_STSA_transcode($data) {
       "local path" => "scratch/wav/",
       "save path" => NULL
     );
-    exec("java -Xmx20148m -classpath modules/traits-MMSE_STSA/MMSE_STSA/AudioProcessor DenoisingExample file", $output, $return_value);
+    exec("java -Xmx20148m -classpath modules/traits-MMSE_STSA/MMSE_STSA/AudioProcessor DenoisingExample scratch/wav/".$data["id"].".1kHz-highpass.wav", $output, $return_value);
     exec("mv scratch/wav/".$data["id"].".1kHz-highpass_enhanced.wav scratch/wav/".$data["id"].".1kHz-highpass.MMSE_STSA.wav");
     if ($return_value == 0) {
       $return[$data["id"]] = array(
