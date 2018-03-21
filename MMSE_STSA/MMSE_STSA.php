@@ -23,6 +23,7 @@ function MMSE_STSA_prepare() {
   if ($return_value != 0) {
     core_log("fatal", "MMSE_STSA", "Could not compile DenoisingExample.java: ".serialize($output));
   }
+  return(array());
 }
 
 function MMSE_STSA_transcode($data) {
@@ -52,4 +53,5 @@ function MMSE_STSA_transcode($data) {
       core_log("warning", "bioacoustica", "Could not download file for BioAcosutica recording ".$data["id"].".");
     }
   }
+  return($return);
 }
